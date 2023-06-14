@@ -1,0 +1,93 @@
+/*
+
+Robert works as a chef at a pizza place. He has only three kinds of pizza bases:- big, medium, and small.
+
+There are a fixed number of bases for each size.
+
+Design a pizza base management system for his kitchen.
+
+Implement the PizzaBase class:
+
+PizzaBase(int big, int medium, int small)`
+Initializes object of the PizzaBase class. The number of bases for each pizza size are given as part of the constructor.
+bool checkBase(int pizzaSize)` 
+Checks whether there is a pizza base available of pizzaSize for the pizza ordered. pizzaSize can be of three kinds: 
+big, medium, or small, which are represented by 1, 2, and 3 respectively.
+If there is no base available, return false, else make a pizza from a base of that size and return true.
+
+*/
+// Code
+
+import java.io.*;
+import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Main {
+
+  public static void main(String[] args) throws IOException {
+    //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    Scanner sc = new Scanner(System.in);
+
+    int n = sc.nextInt();  
+    int a = sc.nextInt();  
+    int b = sc.nextInt();  
+    int c = sc.nextInt();  
+    PizzaBase answer = new PizzaBase(a,b,c);
+    for(int i=0;i<n;i++)
+    {
+      int q = sc.nextInt(); 
+      System.out.println(answer.checkBase(q));
+    }
+  }
+}
+
+class PizzaBase {
+
+	int big;
+	int medium;
+	int small;
+	
+ 
+    public PizzaBase(int big, int medium, int small) {
+        //your code here 
+		this.big=big;
+		this.medium=medium;
+		this.small=small;
+    }
+    
+    public boolean checkBase(int pizzaSize) {
+        //your code here
+
+	if(pizzaSize==1){
+		if(this.big==0){
+			return false;
+		}
+		else{ 
+			this.big -=1;
+			return true;
+		}
+	}
+		if(pizzaSize==2){
+		if(this.medium==0){
+			return false;
+		}
+		else{ 
+			this.medium -=1;
+			return true;
+		}
+	}
+		if(pizzaSize==3){
+		if(this.small==0){
+			return false;
+		}
+		else{ 
+			this.small -=1;
+			return true;
+		}
+	}
+
+return true;
+		
+    }
+}
